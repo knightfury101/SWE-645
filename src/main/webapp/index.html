@@ -1,0 +1,131 @@
+<html>
+<div class="container">
+    <header class="header">
+        <h1 id="title" class="text-center">Student Survey form</h1>
+        <p id="description" class="description text-center">
+            Thank you for taking the time to help us improve
+        </p>
+    </header>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="templatemo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <!-- My css for this page  -->
+
+    <link rel="stylesheet" href="style.css">
+
+    <body>
+        <form id="survey-form">
+            <div class="form-group">
+                <label id="fname" for="firstname">First Name</label>
+                <input type="text" name="firstname" id="firstname" class="form-control" placeholder="Enter your First name"
+                       required />
+            </div>
+            <div class="form-group">
+                <label id="lname" for="lastname">Last Name</label>
+                <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Enter your Last name"
+                       required />
+            </div>
+            <div class="form-group">
+                <label id="address" for="streetaddres">Street address</label>
+                <input type="text" name="streetaddres" id="streetaddres" class="form-control"
+                       placeholder="Enter your streetaddres" required />
+            </div>
+            <div class="form-group">
+                <label id="cityname" for="city">City</label>
+                <input type="text" name="city" id="city" class="form-control" placeholder="Enter your city name" required />
+            </div>
+            <div class="form-group">
+                <label id="state" for="statename">State</label>
+                <input type="text" name="statename" id="statename" class="form-control" placeholder="Enter your state name"
+                       required />
+            </div>
+            <div class="form-group">
+                <label id="ziplabel" for="zip">Zip</label>
+                <input type="text" name="zip" id="zip" class="form-control" placeholder="Enter your zip" required />
+            </div>
+            <div class="form-group">
+                <label id="emaillabel" for="email">Email</label>
+                <input type="email" name="email" id="email" class="form-control" placeholder="Enter your email" required />
+            </div>
+
+            <div class="form-group">
+                <label id="tellabel" for="telephone"></label>
+                <input type="tel" name="telephone" id="telephone" class="form-control" placeholder="Phone Number" maxlength="10"
+                       required />
+            </div>
+
+            <div class="form-group">
+                <label id="datelabel" for="surveydate">Survey Date</label>
+                <input type="date" name="surveydate" id="surveydate" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <p>How you recommend this school</p>
+                <select id="dropdown" name="role" class="form-control" required>
+                    <option disabled selected value>Select Recommendation</option>
+                    <option value="verylikely">Very likely</option>
+                    <option value="Likely">Likely</option>
+                    <option value="Unlikely">Unlikely</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <p>How you became interested in the University</p>
+                <label>
+                    <input name="user-recommend" value="friends" type="radio" class="input-radio" checked />friends</label>
+                <label>
+                    <input name="user-recommend" value="television" type="radio" class="input-radio" />television</label>
+
+                <label><input name="user-recommend" value="Internet" type="radio" class="input-radio" />Internet</label>
+
+                <label><input name="user-recommend" value="other" type="radio" class="input-radio" />other</label>
+            </div>
+
+
+            <div class="form-group">
+                <p>
+                    What they liked most about the campus?
+                    <span class="clue">(Check all that apply)</span>
+                </p>
+
+                <label><input name="prefer" value="students" type="checkbox" class="input-checkbox" />students</label>
+                <label>
+                    <input name="prefer" value="location" type="checkbox" class="input-checkbox" />location</label>
+                <label><input name="prefer" value="campus" type="checkbox" class="input-checkbox" />campus</label>
+                <label><input name="prefer" value="atmosphere" type="checkbox" class="input-checkbox" />atmosphere</label>
+                <label><input name="prefer" value="dorm rooms" type="checkbox" class="input-checkbox" />dorm rooms</label>
+                <label><input name="prefer" value="sports" type="checkbox" class="input-checkbox" />sports</label>
+            </div>
+
+            <div class="form-group">
+                <label id="rafflelabel" for="raffle">Raffle</label>
+                <input type="text" onchange="" name="raffle" id="raffle" class="form-control" placeholder="Enter your raffle" required />
+
+                <div class="form-group">
+                    <p>Any comments or suggestions?</p>
+                    <textarea id="comments" class="input-textarea" name="comment"
+                              placeholder="Enter your comment here..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" id="submit" class="submit-button">
+                        Submit
+                    </button>
+                </div>
+                <div class="form-group">
+                    <button type="reset" id="reset" class="cancel-button">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </form>
+    </body>
+</div>
+
+
+</html>
