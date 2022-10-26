@@ -27,7 +27,7 @@ pipeline {
 
         stage{"Deploying to Rancher as a single pod"}{
             steps{
-                    sh 'kubectl rollout restart deploy student-survey -n assignment-2'
+                    sh 'kubectl rollout restart deploy deploy-1 -n swe645'
                 }
         }   
     }
