@@ -9,7 +9,7 @@ pipeline {
             script {
                 chechkout scm
                 sh 'rm -rf *.war'
-                sh 'jar -cvf /target/swe645.war -C WebContent/ .'
+                sh 'jar -cvf swe645.war -C target/ .'
                 sh 'echo ${BUILD_TIMESTAMP}'
                 sh "docker login -u arajput4 -p ${DOCKERHUB_PASS}"
                 def customImage = docker.build{"arajput4/surveyform:${BUILD_TIMESTAMP}"}
