@@ -27,18 +27,8 @@ pipeline {
 
         stage{"Deploying to Rancher as a single pod"}{
             steps{
-                    sh 'kubectl set image deployment/deploy-1 swe645-assn2-deploy=arajput4/surveyform:${BUILD_TIMESTAMP} -n jenkins-pipeline'
-                }
-        }
-        
-
-        stage{"Deploying to Rancher as a loadbalancer"}{
-            steps{
-                    sh 'kubectl set image deployment/lb-1 swe645-assn2-deploy-loadbalancer=arajput4/surveyform:${BUILD_TIMESTAMP} -n jenkins-pipeline'
+                    sh 'kubectl rollout restart deploy student-survey -n assignment-2'
                 }
         }   
-
-        
     }
-
 }
