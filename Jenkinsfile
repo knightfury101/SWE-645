@@ -27,7 +27,7 @@ pipeline {
 
         stage{"Deploying to Rancher as a single pod"}{
             steps{
-                    sh 'kubectl rollout restart deployment/deploy-1 -n default'
+                    sh 'kubectl rollout restart deploy-1 -n default'
                 }
         }   
     }
