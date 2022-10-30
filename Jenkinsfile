@@ -1,34 +1,52 @@
 pipeline {
     agent any 
     environment {
-        DOCKERHUB_PASS =  credentials{'9650291450'}
+       DOCKERHUB_PASS =  "NE=.ce,c-bf@nS3"
     }
 
-    stages{ 
-        stage{"Building The Survey Page"} {
-            script {
-                chechkout scm
-                sh 'rm -rf *.war'
-                sh 'jar -cvf swe645.war -C target/ .'
-                sh 'echo ${BUILD_TIMESTAMP}'
-                sh "docker login -u arajput4 -p ${DOCKERHUB_PASS}"
-                def customImage = docker.build{"arajput4/surveyform:${BUILD_TIMESTAMP}"}
-            }
-        }
-    
-
-        stage{"Pushing Image to Dockerhub"}{
-            steps{
-                script{
-                    sh 'docker push arajput4/surveyform:${BUILD_TIMESTAMP}'
+    stages { 
+        stage("Building The Survey Page") {
+            steps {
+                script {
+                    checkout scm
+                    sh 'rm -rf target/*.war'
+                    sh 'jar -cvf target/SurveyForm.war -C src/main/webapp/ .'
+                    sh "docker login -u heysreenir -p ${DOCKERHUB_PASS}"
+                    def customImage = docker.build("heysreenir/surveyform-assn2:latest")
                 }
             }
         }
-
-        stage{"Deploying to Rancher as a single pod"}{
-            steps{
-                    sh 'kubectl rollout restart deploy-1 -n default'
+        
+        stage("Pushing the Image to DockerHub") {
+            steps {
+                script {
+                    sh 'docker push heysreenir/surveyform-assn2:latest'
                 }
-        }   
+            }
+        }
+        
+        stage("Deploy on Rancher as single pod") {
+            steps {
+                script {
+                    sh 'kubectl set image deployment/deploy1 container-0=heysreenir/surveyform-assn2:latest -n swe'
+                }
+            }
+        }
+        
+
+        stage("Deploy on Rancher with load balancer") {
+            steps {
+                script {
+                    sh 'kubectl set image deployment/lb1 container-0=heysreenir/surveyform-assn2:latest -n swe'
+                }
+            }
+        }
+        
+        
+        
+
+                
+        
     }
+
 }
