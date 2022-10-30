@@ -1,7 +1,7 @@
 pipeline {
     agent any 
     environment {
-       DOCKERHUB_PASS =  "NE=.ce,c-bf@nS3"
+       DOCKERHUB_PASS =  "9650291450"
     }
 
     stages { 
@@ -11,8 +11,8 @@ pipeline {
                     checkout scm
                     sh 'rm -rf target/*.war'
                     sh 'jar -cvf target/SurveyForm.war -C src/main/webapp/ .'
-                    sh "docker login -u heysreenir -p ${DOCKERHUB_PASS}"
-                    def customImage = docker.build("heysreenir/surveyform-assn2:latest")
+                    sh "docker login -u arajput4 -p ${DOCKERHUB_PASS}"
+                    def customImage = docker.build("arajput4/surveyform:latest")
                 }
             }
         }
@@ -20,7 +20,7 @@ pipeline {
         stage("Pushing the Image to DockerHub") {
             steps {
                 script {
-                    sh 'docker push heysreenir/surveyform-assn2:latest'
+                    sh 'docker push arajput4/surveyform:latest'
                 }
             }
         }
@@ -28,7 +28,7 @@ pipeline {
         stage("Deploy on Rancher as single pod") {
             steps {
                 script {
-                    sh 'kubectl set image deployment/deploy1 container-0=heysreenir/surveyform-assn2:latest -n swe'
+                    sh 'kubectl set image deployment/deploy1 container-0=arajput4/surveyform:latest -n swe'
                 }
             }
         }
@@ -37,7 +37,7 @@ pipeline {
         stage("Deploy on Rancher with load balancer") {
             steps {
                 script {
-                    sh 'kubectl set image deployment/lb1 container-0=heysreenir/surveyform-assn2:latest -n swe'
+                    sh 'kubectl set image deployment/lb1 container-0=arajput4/surveyform:latest -n swe'
                 }
             }
         }
