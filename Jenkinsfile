@@ -10,7 +10,7 @@ pipeline {
                 script {
                     checkout scm
                     sh 'rm -rf target/*.war'
-                    sh 'jar -cvf target/SurveyForm.war -C src/main/webapp/ .'
+                    sh 'jar -cvf target/swe645.war -C src/main/webapp/ .'
                     sh "docker login -u arajput4 -p ${DOCKERHUB_PASS}"
                     def customImage = docker.build("arajput4/surveyform:latest")
                 }
